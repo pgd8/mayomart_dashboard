@@ -82,7 +82,6 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
     ];
     return Scaffold(
-      appBar: AppBar(),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

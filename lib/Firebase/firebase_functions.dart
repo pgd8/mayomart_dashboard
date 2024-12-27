@@ -2,8 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mayomart_dashboard/Data_Classes/product_data_class.dart';
 
 class FirebaseFunctions {
-
-  CollectionReference getProductsCollection() {
+  CollectionReference<ProductDataClass> getProductsCollection() {
     return FirebaseFirestore.instance
         .collection("products")
         .withConverter<ProductDataClass>(
@@ -16,18 +15,29 @@ class FirebaseFunctions {
 
   void getUser() {}
 
-  void addProductToFireStore(ProductDataClass product) {
+  Future<void> addProductToFireStore(ProductDataClass product) {
     var collection = getProductsCollection();
     var docRef = collection.doc();
     product.id = docRef.id;
-    docRef.set(product);
+    return docRef.set(product);
   }
 
-  void getProductFromFireStore(ProductDataClass product) {
+  Future<void> updateProduct(
+      String oldProductId, ProductDataClass product) {
+    var collection = getProductsCollection();
+    var docRef = collection.doc(oldProductId);
+    product.id = oldProductId;
+    return docRef.set(product);
+  }
+
+  Future<QuerySnapshot<ProductDataClass>> getProductFromFireStore() {
+    return getProductsCollection().get();
+  }
+
+  void deleteProduct(ProductDataClass product) {
     var collection = getProductsCollection();
     var docRef = collection.doc(product.id);
-    docRef.get();
-
+    docRef.delete();
   }
 
   void addOrder() {}

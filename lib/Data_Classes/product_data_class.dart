@@ -4,10 +4,10 @@ class ProductDataClass {
   String productName;
   String productDescription;
   String productCategory;
-  int productStock;
-  int maxQuantity;
-  int minQuantity;
-  int productPrice;
+  String productStock;
+  String maxQuantity;
+  String minQuantity;
+  String productPrice;
 
   ProductDataClass(
       {this.id = "",

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mayomart_dashboard/My_App/app_theme.dart';
+import 'package:mayomart_dashboard/Pages/Invetory_Page/Components/products.dart';
 import 'package:mayomart_dashboard/Screens/HomeScreen/home_screen.dart';
 import 'package:mayomart_dashboard/Screens/addItemScreen/add_item_screen.dart';
+import 'package:mayomart_dashboard/Screens/poduct_details_screen.dart';
 import 'package:provider/provider.dart';
 import 'my_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -27,7 +29,8 @@ class MyApp extends StatelessWidget {
         initialRoute: HomeScreen.routeName,
         routes: {
           HomeScreen.routeName: (context) => HomeScreen(),
-          AddItemScreen.routeName: (context)=> AddItemScreen(),
+          AddItemScreen.routeName: (context)=> const AddItemScreen(),
+          ProductDetailScreen.routeName: (context)=> ProductDetailScreen()
         },
       ),
     );

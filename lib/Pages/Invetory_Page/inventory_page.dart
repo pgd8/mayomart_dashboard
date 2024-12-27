@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mayomart_dashboard/Firebase/firebase_functions.dart';
 import 'package:mayomart_dashboard/My_App/app_theme.dart';
+import 'package:mayomart_dashboard/Pages/Invetory_Page/Components/products.dart';
 import 'package:mayomart_dashboard/Screens/addItemScreen/add_item_screen.dart';
 import 'package:mayomart_dashboard/Shared_Components/button_label.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
-class InventoryPage extends StatelessWidget {
+import '../../My_App/my_provider.dart';
+
+class InventoryPage extends StatefulWidget {
   InventoryPage({super.key});
 
+  @override
+  State<InventoryPage> createState() => _InventoryPageState();
+}
+
+class _InventoryPageState extends State<InventoryPage> {
   var searchController = TextEditingController();
+
+  FirebaseFunctions firebaseFunction = FirebaseFunctions();
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     ScreenUtil.init(context, designSize: const Size(1920, 1080));
     return Column(
       children: [
@@ -45,19 +58,20 @@ class InventoryPage extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child: ButtonLabel(
-                  label: AppLocalizations.of(context)!.deleteItem,
+              IconButton(
+                  onPressed: () {
+                    setState(() {});
+                  },
                   icon: Icon(
-                    Icons.delete,
-                    color: AppTheme.thirdColor,
-                  ),
-                ),
-              ),
+                    Icons.refresh,
+                    color: provider.appTheme == ThemeMode.light
+                        ? AppTheme.secondColor
+                        : AppTheme.thirdColor,
+                  ))
             ],
           ),
         ),
+        Products(),
       ],
     );
   }

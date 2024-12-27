@@ -37,5 +37,11 @@
   "productStockRequired": "الكمية المتاحة من المنتج مطلوبة",
   "productMinQuantityRequired": "الحد الأدنى للطلب مطلوب",
   "productMaximumQuantityRequired": "الحد الأقصى للطلب مطلوب",
-  "productPriceRequired": "سعر المنتج مطلوب"
+  "productPriceRequired": "سعر المنتج مطلوب",
+  "done": "تم",
+  "productUpdatedSuccessfully": "تم تعديل المنتج بنجاح",
+  "productAddedSuccessfully": "تمت إضافة المنتج بنجاح",
+  "productDeletedSuccessfully" : "تم حذ المنتج بنجاح",
+  "ok": "حسنا",
+  "loading": "جاري التحميل"
 }

@@ -1,42 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mayomart_dashboard/Data_Classes/product_data_class.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mayomart_dashboard/Firebase/firebase_functions.dart';
 import 'package:mayomart_dashboard/My_App/app_theme.dart';
+import 'package:mayomart_dashboard/My_App/my_provider.dart';
+import 'package:mayomart_dashboard/Screens/HomeScreen/home_screen.dart';
 import 'package:mayomart_dashboard/Shared_Components/button_label.dart';
-import 'package:mayomart_dashboard/Shared_Components/field_label.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mayomart_dashboard/Shared_Components/show_alert.dart';
 import 'package:provider/provider.dart';
+import '../Shared_Components/field_label.dart';
 
-import '../../My_App/my_provider.dart';
+class ProductDetailScreen extends StatelessWidget {
+  static const String routeName = "Product Details";
 
-class AddItemScreen extends StatefulWidget {
-  static const String routeName = "AddItemScreen";
+  ProductDetailScreen({super.key});
 
-  const AddItemScreen({super.key});
-
-  @override
-  State<AddItemScreen> createState() => _AddItemScreenState();
-}
-
-class _AddItemScreenState extends State<AddItemScreen> {
-  FirebaseFunctions firebaseFunctions = FirebaseFunctions();
-  TextEditingController productNameCon = TextEditingController();
-  TextEditingController productDescriptionCon = TextEditingController();
-  TextEditingController productQuantityInStockCon = TextEditingController();
-  TextEditingController productImageCon = TextEditingController();
-  TextEditingController productCategoryCon = TextEditingController();
-  TextEditingController productMinimumQuantityCon = TextEditingController();
-  TextEditingController productMaxQuantityCon = TextEditingController();
-  TextEditingController productPriceCon = TextEditingController();
+  var productNameCon = TextEditingController();
+  var productDescriptionCon = TextEditingController();
+  var productQuantityInStockCon = TextEditingController();
+  var productImageCon = TextEditingController();
+  var productCategoryCon = TextEditingController();
+  var productMinimumQuantityCon = TextEditingController();
+  var productMaxQuantityCon = TextEditingController();
+  var productPriceCon = TextEditingController();
   var formKey = GlobalKey<FormState>();
+  FirebaseFunctions functions = FirebaseFunctions();
+  bool isUpdated = false;
+
+  getData(ProductDataClass product) {
+    productNameCon.text = product.productName;
+    productDescriptionCon.text = product.productDescription;
+    productQuantityInStockCon.text = product.productStock.toString();
+    productImageCon.text = product.productImageLink;
+    productCategoryCon.text = product.productCategory;
+    productMinimumQuantityCon.text = product.minQuantity.toString();
+    productMaxQuantityCon.text = product.maxQuantity.toString();
+    productPriceCon.text = product.productPrice.toString();
+    return product;
+  }
 
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
-    ScreenUtil.init(context, designSize: const Size(1920, 1080));
-
+    var product =
+        ModalRoute.of(context)!.settings.arguments as ProductDataClass;
+    isUpdated ? clearFields() : getData(product);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(30),
@@ -52,7 +61,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       color: Colors.black),
                   Container(
                     width: 600.w,
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
                       controller: productNameCon,
                       validator: (String? value) {
@@ -69,7 +78,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                           fontFamily: "childos"),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Label(
@@ -78,7 +87,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       color: Colors.black),
                   Container(
                     width: 600.w,
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
                       validator: (String? value) {
                         if (value!.isEmpty) {
@@ -95,7 +104,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                           fontFamily: "childos"),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Label(
@@ -103,7 +112,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       color: Colors.black),
                   Container(
                     width: 600.w,
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
                       validator: (String? value) {
                         if (value!.isEmpty) {
@@ -125,7 +134,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       color: Colors.black),
                   Container(
                     width: 600.w,
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
                       validator: (String? value) {
                         if (value!.isEmpty) {
@@ -142,6 +151,48 @@ class _AddItemScreenState extends State<AddItemScreen> {
                           fontFamily: "childos"),
                     ),
                   ),
+                  ElevatedButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          isUpdated = !isUpdated;
+                          var newProduct = ProductDataClass(
+                              productImageLink: productImageCon.text,
+                              productName: productNameCon.text,
+                              productDescription: productDescriptionCon.text,
+                              productCategory: productCategoryCon.text,
+                              productStock: productQuantityInStockCon.text,
+                              productPrice: productPriceCon.text,
+                              maxQuantity: productMaxQuantityCon.text,
+                              minQuantity: productMinimumQuantityCon.text);
+                          showAlert(
+                              context, AppLocalizations.of(context)!.loading);
+                          functions
+                              .updateProduct(product.id, newProduct)
+                              .then((value) {
+                            hideAlert(context);
+                            getData(newProduct);
+                            showMessage(
+                                context,
+                                AppLocalizations.of(context)!.done,
+                                AppLocalizations.of(context)!
+                                    .productUpdatedSuccessfully, () {
+                              hideAlert(context);
+                              clearFields();
+                            },
+                                AppLocalizations.of(context)!.ok,
+                                Icon(
+                                  Icons.done,
+                                  color: AppTheme.thirdColor,
+                                ));
+                          });
+                        }
+                      },
+                      child: ButtonLabel(
+                          label: AppLocalizations.of(context)!.save,
+                          icon: const Icon(
+                            Icons.save_rounded,
+                            color: AppTheme.thirdColor,
+                          )))
                 ],
               ),
               Column(
@@ -151,7 +202,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       color: Colors.black),
                   Container(
                     width: 600.w,
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
                       validator: (String? value) {
                         if (value!.isEmpty) {
@@ -168,7 +219,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                           fontFamily: "childos"),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Label(
@@ -177,7 +228,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       color: Colors.black),
                   Container(
                     width: 600.w,
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
                       validator: (String? value) {
                         if (value!.isEmpty) {
@@ -194,7 +245,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Label(
@@ -203,7 +254,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       color: Colors.black),
                   Container(
                     width: 600.w,
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
                       validator: (String? value) {
                         if (value!.isEmpty) {
@@ -225,7 +276,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       color: Colors.black),
                   Container(
                     width: 600.w,
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(vertical: 10),
                     child: TextFormField(
                       validator: (String? value) {
                         if (value!.isEmpty) {
@@ -234,7 +285,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         }
                       },
                       controller: productPriceCon,
-                      keyboardType: TextInputType.numberWithOptions(
+                      keyboardType: const TextInputType.numberWithOptions(
                         decimal: true,
                       ),
                       style: TextStyle(
@@ -245,47 +296,32 @@ class _AddItemScreenState extends State<AddItemScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          showAlert(
-                              context, AppLocalizations.of(context)!.loading);
-                          firebaseFunctions
-                              .addProductToFireStore(ProductDataClass(
-                                  productImageLink: productImageCon.text,
-                                  productName: productNameCon.text,
-                                  productDescription:
-                                      productDescriptionCon.text,
-                                  productCategory: productCategoryCon.text,
-                                  productStock: productQuantityInStockCon.text,
-                                  productPrice: productPriceCon.text,
-                                  maxQuantity: productMaxQuantityCon.text,
-                                  minQuantity: productMinimumQuantityCon.text))
-                              .then((value) {
-                            hideAlert(context);
-                            showMessage(
-                                context,
-                                AppLocalizations.of(context)!.done,
-                                AppLocalizations.of(context)!
-                                    .productAddedSuccessfully, () {
-                              Navigator.pop(context);
-                            },
-                                AppLocalizations.of(context)!.ok,
-                                Icon(
-                                  Icons.done,
-                                  color: AppTheme.thirdColor,
-                                ));
-                          });
-                          clearFields();
-                        }
+                        functions.deleteProduct(product);
+                        showMessage(
+                            context,
+                            AppLocalizations.of(context)!.done,
+                            AppLocalizations.of(context)!
+                                .productDeletedSuccessfully, () {
+                          hideAlert(context);
+                          Navigator.popAndPushNamed(
+                              context, HomeScreen.routeName);
+                        },
+                            AppLocalizations.of(context)!.ok,
+                            const Icon(
+                              Icons.done,
+                              color: AppTheme.thirdColor,
+                            ));
+                        clearFields();
                       },
                       child: ButtonLabel(
-                        label: AppLocalizations.of(context)!.addItem,
+                        label: AppLocalizations.of(context)!.deleteItem,
                         icon: const Icon(
-                          Icons.add,
+                          Icons.delete,
                           color: AppTheme.thirdColor,
                         ),
                       )),

@@ -37,5 +37,11 @@
   "productStockRequired": "Quantity In Stock Required",
   "productMinQuantityRequired": "Product Minimum Quantity Required",
   "productMaximumQuantityRequired": "Product Maximum Quantity Required",
-  "productPriceRequired": "Product Price Required"
+  "productPriceRequired": "Product Price Required",
+  "done": "Done Successfully",
+  "productUpdatedSuccessfully": "Product Updated Successfully",
+  "productAddedSuccessfully": "Product Added Successfully",
+  "productDeletedSuccessfully" : "Product Deleted Successfully",
+  "ok": "OK",
+  "loading": "Loading"
 }

@@ -21,6 +21,7 @@ class ButtonLabel extends StatelessWidget {
                 fontSize: 22.sp,
                 fontFamily: "childos",
                 fontWeight: FontWeight.bold)),
+        SizedBox(width: 15.w,),
         icon,
       ],
     );
