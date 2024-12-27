@@ -7,8 +7,8 @@ class AppTheme {
   static const Color thirdColor = Colors.white;
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: thirdColor,
-    appBarTheme: AppBarTheme(backgroundColor: thirdColor),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    appBarTheme: const AppBarTheme(backgroundColor: thirdColor),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
       showUnselectedLabels: false,
       selectedIconTheme: IconThemeData(color: AppTheme.mainColor),
@@ -34,7 +34,7 @@ class AppTheme {
       shape: WidgetStatePropertyAll(ContinuousRectangleBorder(
         borderRadius: BorderRadius.circular(30.r),
       )),
-      backgroundColor: WidgetStatePropertyAll(thirdColor),
+      backgroundColor: const WidgetStatePropertyAll(thirdColor),
       hintStyle: WidgetStatePropertyAll(TextStyle(
         fontSize: 25.sp,
         color: Colors.grey,
@@ -44,17 +44,17 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.r),
-          borderSide: BorderSide(color: Colors.black)),
+          borderSide: const BorderSide(color: Colors.black)),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.r),
-          borderSide: BorderSide(color: Colors.black)),
+          borderSide: const BorderSide(color: Colors.black)),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(20.r),
-        borderSide: BorderSide(color: Colors.red),
+        borderSide: const BorderSide(color: Colors.red),
       ),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.r),
-          borderSide: BorderSide(color: Colors.black)),
+          borderSide: const BorderSide(color: Colors.black)),
     ),
   );
 
@@ -63,21 +63,21 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.r),
-          borderSide: BorderSide(color: thirdColor)),
+          borderSide: const BorderSide(color: thirdColor)),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.r),
-          borderSide: BorderSide(color: thirdColor)),
+          borderSide: const BorderSide(color: thirdColor)),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(20.r),
-        borderSide: BorderSide(color: mainColor),
+        borderSide: const BorderSide(color: mainColor),
       ),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.r),
-          borderSide: BorderSide(color: thirdColor)),
+          borderSide: const BorderSide(color: thirdColor)),
     ),
     scaffoldBackgroundColor: secondColor,
-    appBarTheme: AppBarTheme(color: secondColor),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    appBarTheme: const AppBarTheme(color: secondColor),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
       showUnselectedLabels: false,
       selectedIconTheme: IconThemeData(color: AppTheme.mainColor),
@@ -103,7 +103,7 @@ class AppTheme {
       shape: WidgetStatePropertyAll(ContinuousRectangleBorder(
         borderRadius: BorderRadius.circular(30.r),
       )),
-      backgroundColor: WidgetStatePropertyAll(thirdColor),
+      backgroundColor: const WidgetStatePropertyAll(thirdColor),
       hintStyle: WidgetStatePropertyAll(TextStyle(
         fontSize: 25.sp,
         color: Colors.grey,
