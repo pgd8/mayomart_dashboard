@@ -42,6 +42,8 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, designSize: const Size(1920, 1080));
+
     var provider = Provider.of<MyProvider>(context);
     var product =
         ModalRoute.of(context)!.settings.arguments as ProductDataClass;

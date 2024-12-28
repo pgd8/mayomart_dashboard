@@ -20,6 +20,7 @@
   "email": "البريد الإلكتروني",
   "phoneNumber": "رقم الهاتف",
   "password": "كلمة المرور",
+  "confirmPassword": "تأكيد كلمة المرور",
   "edit": "تعديل",
   "save": "حفظ",
   "productName": "إسم المنتج",
@@ -41,7 +42,16 @@
   "done": "تم",
   "productUpdatedSuccessfully": "تم تعديل المنتج بنجاح",
   "productAddedSuccessfully": "تمت إضافة المنتج بنجاح",
-  "productDeletedSuccessfully" : "تم حذ المنتج بنجاح",
+  "productDeletedSuccessfully": "تم حذ المنتج بنجاح",
   "ok": "حسنا",
-  "loading": "جاري التحميل"
+  "loading": "جاري التحميل",
+  "addUser": "إضافة مستخدم",
+  "userAdded": "تمت إضافة المستخدم بنجاح",
+  "address": "العنوان",
+  "addressIsRequired": "العنوان مطلوب",
+  "userNameRequired": "‘سم المستخدم مطلوب",
+  "emailIsRequired": "البريد الإلكتروني مطلوب",
+  "phoneNumberIsRequired": "رقم الهاتف مطلوب",
+  "passwordIsRequired": "كلمة المرور مطلوبة",
+  "passwordDoesNotMatch": "كلمة المرور غير متطابقة"
 }
