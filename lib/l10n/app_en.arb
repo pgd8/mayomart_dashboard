@@ -53,5 +53,8 @@
   "emailIsRequired": "Email Is Required",
   "phoneNumberIsRequired": "Phone Number Is Required",
   "passwordIsRequired": "Password is Required",
-  "passwordDoesNotMatch": "Password Doesn't Match"
+  "passwordDoesNotMatch": "Password Doesn't Match",
+  "update" : "Update",
+  "deleteUser" : "Delete User",
+  "userDeletedSuccessfully": "user Deleted Successfully"
 }

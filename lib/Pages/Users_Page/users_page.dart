@@ -25,57 +25,61 @@ class _UsersPageState extends State<UsersPage> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context, designSize: const Size(1920, 1080));
     var provider = Provider.of<MyProvider>(context);
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Row(
-        children: [
-          Container(
-            width: 900.w,
-            margin: EdgeInsets.symmetric(horizontal: 20.w),
-            child: SearchBar(
-              controller: searchController,
-              trailing: Iterable.generate(
-                1,
-                (index) => IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.search)),
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              width: 900.w,
+              margin: EdgeInsets.symmetric(horizontal: 20.w),
+              child: SearchBar(
+                controller: searchController,
+                trailing: Iterable.generate(
+                  1,
+                  (index) => IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.search)),
+                ),
+                hintText: AppLocalizations.of(context)!.searchHere,
               ),
-              hintText: AppLocalizations.of(context)!.searchHere,
             ),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, AddUserScreen.routeName);
-              },
-              child: ButtonLabel(
-                  label: AppLocalizations.of(context)!.addUser,
-                  icon: Icon(
-                    Icons.add,
-                    color: AppTheme.thirdColor,
-                  ))),
-          IconButton(
-              onPressed: () {
-                setState(() {});
-              },
-              icon: Icon(
-                Icons.refresh,
-                color: provider.appTheme == ThemeMode.light
-                    ? AppTheme.secondColor
-                    : AppTheme.thirdColor,
-              ))
-        ],
-      ),
-      Expanded(
-          child: FutureBuilder(
-              future: functions.getUser(),
-              builder: (context, snapshot) {
-                var users =
-                    snapshot.data?.docs.map((user) => user.data()).toList() ??
-                        [];
-                return ListView.builder(
-                  itemCount: users.length,
-                  itemBuilder: (BuildContext context, int index) =>
-                      UserItem(user: users[index]),
-                );
-              }))
-    ]);
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, AddUserScreen.routeName);
+                },
+                child: ButtonLabel(
+                    label: AppLocalizations.of(context)!.addUser,
+                    icon: Icon(
+                      Icons.person_add_alt_1,
+                      color: AppTheme.thirdColor,
+                    ))),
+            IconButton(
+                onPressed: () {
+                  setState(() {});
+                },
+                icon: Icon(
+                  Icons.refresh,
+                  color: provider.appTheme == ThemeMode.light
+                      ? AppTheme.secondColor
+                      : AppTheme.thirdColor,
+                ))
+          ],
+        ),
+        Expanded(
+            child: FutureBuilder(
+                future: functions.getUser(),
+                builder: (context, snapshot) {
+                  var users =
+                      snapshot.data?.docs.map((user) => user.data()).toList() ??
+                          [];
+                  return ListView.builder(
+                    itemCount: users.length,
+                    itemBuilder: (BuildContext context, int index) =>
+                        UserItem(user: users[index]),
+                  );
+                }))
+      ]),
+    );
   }
 }

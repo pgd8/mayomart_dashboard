@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mayomart_dashboard/My_App/app_theme.dart';
 import 'package:mayomart_dashboard/My_App/my_provider.dart';
+import 'package:mayomart_dashboard/Shared_Components/button_label.dart';
 import 'package:mayomart_dashboard/Shared_Components/field_label.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -101,17 +102,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       }
                       setState(() {});
                     },
-                    child: Row(
-                      children: [
-                        Label(
-                            labelText: AppLocalizations.of(context)!.edit,
-                            color: AppTheme.thirdColor),
-                        Icon(
-                          Icons.edit_note_rounded,
+                    child: ButtonLabel(
+                        label: AppLocalizations.of(context)!.edit,
+                        icon: const Icon(
+                          Icons.edit,
                           color: AppTheme.thirdColor,
-                        )
-                      ],
-                    )),
+                        ))),
                 SizedBox(
                   width: 20,
                 ),
@@ -122,17 +118,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         setState(() {});
                       }
                     },
-                    child: Row(
-                      children: [
-                        Label(
-                            labelText: AppLocalizations.of(context)!.save,
-                            color: AppTheme.thirdColor),
-                        const Icon(
+                    child: ButtonLabel(
+                        label: AppLocalizations.of(context)!.save,
+                        icon: Icon(
                           Icons.save_rounded,
                           color: AppTheme.thirdColor,
-                        )
-                      ],
-                    )),
+                        ))),
               ],
             ),
           ],

@@ -6,27 +6,24 @@ class AppTheme {
   static const Color secondColor = Colors.black;
   static const Color thirdColor = Colors.white;
   static const Color lightTileColor = Color.fromRGBO(255, 0, 0, 0.3);
-  static const Color darkTileColor = Color.fromRGBO(
-      57, 52, 52, 0.30196078431372547);
+  static const Color darkTileColor =
+      Color.fromRGBO(57, 52, 52, 0.30196078431372547);
   static ThemeData lightTheme = ThemeData(
     listTileTheme: ListTileThemeData(
-      titleTextStyle: TextStyle(
-        color: secondColor,
-        fontSize: 30.sp,
-        fontWeight: FontWeight.bold,
-        fontFamily: "childos"
-      ),
-      subtitleTextStyle: TextStyle(
-          color: Colors.grey.shade800,
-          fontSize: 23.sp,
-          fontWeight: FontWeight.bold,
-          fontFamily: "childos"
-      ),
-      shape: ContinuousRectangleBorder(
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      tileColor: lightTileColor
-    ),
+        titleTextStyle: TextStyle(
+            color: secondColor,
+            fontSize: 25.sp,
+            fontWeight: FontWeight.bold,
+            fontFamily: "childos"),
+        subtitleTextStyle: TextStyle(
+            color: Colors.grey.shade800,
+            fontSize: 15.sp,
+            fontWeight: FontWeight.bold,
+            fontFamily: "childos"),
+        shape: ContinuousRectangleBorder(
+          borderRadius: BorderRadius.circular(20.r),
+        ),
+        tileColor: lightTileColor),
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: mainColor,
     ),
@@ -86,21 +83,18 @@ class AppTheme {
     listTileTheme: ListTileThemeData(
         titleTextStyle: TextStyle(
             color: thirdColor,
-            fontSize: 30.sp,
+            fontSize: 20.sp,
             fontWeight: FontWeight.bold,
-            fontFamily: "childos"
-        ),
+            fontFamily: "childos"),
         subtitleTextStyle: TextStyle(
             color: Colors.grey,
-            fontSize: 23.sp,
+            fontSize: 15.sp,
             fontWeight: FontWeight.bold,
-            fontFamily: "childos"
-        ),
+            fontFamily: "childos"),
         shape: ContinuousRectangleBorder(
           borderRadius: BorderRadius.circular(20.r),
         ),
-        tileColor: darkTileColor
-    ),
+        tileColor: darkTileColor),
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: mainColor,
     ),

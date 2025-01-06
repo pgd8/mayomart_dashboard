@@ -30,10 +30,10 @@ class FirebaseFunctions {
     return getProductsCollection().get();
   }
 
-  void deleteProduct(ProductDataClass product) {
+  Future<void> deleteProduct(ProductDataClass product) {
     var collection = getProductsCollection();
     var docRef = collection.doc(product.id);
-    docRef.delete();
+   return docRef.delete();
   }
 
   CollectionReference<User> getUsersCollection() {
@@ -52,6 +52,18 @@ class FirebaseFunctions {
 
   Future<QuerySnapshot<User>> getUser() {
     return getUsersCollection().get();
+  }
+
+  Future<void> updateUser(String id, User user) {
+    var collection = getUsersCollection();
+    var docRef = collection.doc(id);
+    return docRef.set(user);
+  }
+
+  Future<void> deleteUser(User user) {
+    var collection = getUsersCollection();
+    var docRef = collection.doc(user.id);
+    return docRef.delete();
   }
 
   void addOrder() {}

@@ -53,5 +53,9 @@
   "emailIsRequired": "البريد الإلكتروني مطلوب",
   "phoneNumberIsRequired": "رقم الهاتف مطلوب",
   "passwordIsRequired": "كلمة المرور مطلوبة",
-  "passwordDoesNotMatch": "كلمة المرور غير متطابقة"
+  "passwordDoesNotMatch": "كلمة المرور غير متطابقة",
+  "update" : "تحديث",
+  "deleteUser" : "حذف مستخدم",
+  "userDeletedSuccessfully": "تم حذف الحساب بنجاح"
+
 }

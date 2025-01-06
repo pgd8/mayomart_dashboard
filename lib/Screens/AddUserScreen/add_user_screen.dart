@@ -227,6 +227,7 @@ class AddUserScreen extends StatelessWidget {
     emailCon.clear();
     phoneNumberCon.clear();
     passwordCon.clear();
+    addressCon.clear();
     confirmPasswordCon.clear();
   }
 }
