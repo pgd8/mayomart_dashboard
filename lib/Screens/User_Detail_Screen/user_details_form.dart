@@ -51,7 +51,7 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                     color: Colors.white),
                 Container(
                   width: 600.w,
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
                   child: TextFormField(
                     controller: userNameCon,
                     validator: (String? value) {
@@ -72,7 +72,7 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                     color: Colors.white),
                 Container(
                   width: 600.w,
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
                   child: TextFormField(
                     controller: emailCon,
                     validator: (String? value) {
@@ -93,7 +93,7 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                     color: Colors.white),
                 Container(
                   width: 600.w,
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
                   child: TextFormField(
                     controller: phoneNumberCon,
                     validator: (String? value) {
@@ -120,7 +120,7 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                     color: Colors.white),
                 Container(
                   width: 600.w,
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
                   child: TextFormField(
                     controller: addressCon,
                     validator: (String? value) {
@@ -141,7 +141,7 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                     color: Colors.white),
                 Container(
                   width: 600.w,
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 10),
                   child: TextFormField(
                     controller: passwordCon,
                     validator: (String? value) {
@@ -166,8 +166,7 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                         onPressed: () {
                           showAlert(
                               context, AppLocalizations.of(context)!.loading);
-                          FirebaseFunctions fire = FirebaseFunctions();
-                          fire.deleteUser(oldUser);
+                          deleteUser(oldUser);
                           hideAlert(context);
                           showMessage(
                               context,
@@ -178,14 +177,14 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                             Navigator.pop(context);
                           },
                               AppLocalizations.of(context)!.ok,
-                              Icon(
+                              const Icon(
                                 Icons.done,
                                 color: Colors.white,
                               ));
                         },
                         child: ButtonLabel(
                           label: AppLocalizations.of(context)!.deleteUser,
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.person_off_rounded,
                             color: AppTheme.thirdColor,
                           ),
@@ -197,8 +196,7 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                         onPressed: () {
                           showAlert(
                               context, AppLocalizations.of(context)!.loading);
-                          FirebaseFunctions fire = FirebaseFunctions();
-                          fire.updateUser(oldUser.id, update());
+                          updateUser(oldUser.id, update());
                           hideAlert(context);
                           showMessage(
                               context,
@@ -207,14 +205,14 @@ class UserDetailsFormState extends State<UserDetailsForm> {
                             hideAlert(context);
                           },
                               AppLocalizations.of(context)!.ok,
-                              Icon(
+                              const Icon(
                                 Icons.done,
                                 color: AppTheme.thirdColor,
                               ));
                         },
                         child: ButtonLabel(
                           label: AppLocalizations.of(context)!.update,
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.update,
                             color: AppTheme.thirdColor,
                           ),

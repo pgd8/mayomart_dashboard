@@ -56,5 +56,6 @@
   "passwordDoesNotMatch": "Password Doesn't Match",
   "update" : "Update",
   "deleteUser" : "Delete User",
-  "userDeletedSuccessfully": "user Deleted Successfully"
+  "userDeletedSuccessfully": "user Deleted Successfully",
+  "addAdmin": "Add An Admin"
 }

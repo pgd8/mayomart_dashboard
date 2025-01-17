@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mayomart_dashboard/Data_Classes/product_data_class.dart';
 import 'package:mayomart_dashboard/Data_Classes/user_data_class.dart';
 
-class FirebaseFunctions {
+
+  FirebaseFirestore instance = FirebaseFirestore.instance;
   CollectionReference<ProductDataClass> getProductsCollection() {
-    return FirebaseFirestore.instance
+    return instance
         .collection("products")
         .withConverter<ProductDataClass>(
             fromFirestore: (snapshot, options) =>
@@ -37,7 +38,7 @@ class FirebaseFunctions {
   }
 
   CollectionReference<User> getUsersCollection() {
-    return FirebaseFirestore.instance.collection("Users").withConverter(
+    return instance.collection("Users").withConverter(
           fromFirestore: (snapshot, options) => User.fromJson(snapshot.data()!),
           toFirestore: (user, options) => user.toJson(),
         );
@@ -69,4 +70,4 @@ class FirebaseFunctions {
   void addOrder() {}
 
   void getOrder() {}
-}
+

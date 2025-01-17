@@ -25,7 +25,6 @@ class ProductDetailScreen extends StatelessWidget {
   var productMaxQuantityCon = TextEditingController();
   var productPriceCon = TextEditingController();
   var formKey = GlobalKey<FormState>();
-  FirebaseFunctions functions = FirebaseFunctions();
   bool isUpdated = false;
 
   getData(ProductDataClass product) {
@@ -168,9 +167,7 @@ class ProductDetailScreen extends StatelessWidget {
                               minQuantity: productMinimumQuantityCon.text);
                           showAlert(
                               context, AppLocalizations.of(context)!.loading);
-                          functions
-                              .updateProduct(product.id, newProduct)
-                              .then((value) {
+                          updateProduct(product.id, newProduct).then((value) {
                             hideAlert(context);
                             getData(newProduct);
                             showMessage(
@@ -303,7 +300,7 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        functions.deleteProduct(product);
+                        deleteProduct(product);
                         showMessage(
                             context,
                             AppLocalizations.of(context)!.done,

@@ -20,8 +20,6 @@ class InventoryPage extends StatefulWidget {
 class _InventoryPageState extends State<InventoryPage> {
   var searchController = TextEditingController();
 
-  FirebaseFunctions firebaseFunction = FirebaseFunctions();
-
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);

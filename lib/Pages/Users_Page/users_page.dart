@@ -19,8 +19,6 @@ class UsersPage extends StatefulWidget {
 class _UsersPageState extends State<UsersPage> {
   var searchController = TextEditingController();
 
-  var functions = FirebaseFunctions();
-
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context, designSize: const Size(1920, 1080));
@@ -68,7 +66,7 @@ class _UsersPageState extends State<UsersPage> {
         ),
         Expanded(
             child: FutureBuilder(
-                future: functions.getUser(),
+                future: getUser(),
                 builder: (context, snapshot) {
                   var users =
                       snapshot.data?.docs.map((user) => user.data()).toList() ??

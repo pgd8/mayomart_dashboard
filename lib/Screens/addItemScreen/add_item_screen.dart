@@ -21,7 +21,6 @@ class AddItemScreen extends StatefulWidget {
 }
 
 class _AddItemScreenState extends State<AddItemScreen> {
-  FirebaseFunctions firebaseFunctions = FirebaseFunctions();
   TextEditingController productNameCon = TextEditingController();
   TextEditingController productDescriptionCon = TextEditingController();
   TextEditingController productQuantityInStockCon = TextEditingController();
@@ -253,8 +252,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
                         if (formKey.currentState!.validate()) {
                           showAlert(
                               context, AppLocalizations.of(context)!.loading);
-                          firebaseFunctions
-                              .addProductToFireStore(ProductDataClass(
+                          addProductToFireStore(ProductDataClass(
                                   productImageLink: productImageCon.text,
                                   productName: productNameCon.text,
                                   productDescription:

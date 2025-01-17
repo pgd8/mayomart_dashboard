@@ -21,7 +21,6 @@ class AddUserScreen extends StatelessWidget {
   var addressCon = TextEditingController();
   var passwordCon = TextEditingController();
   var confirmPasswordCon = TextEditingController();
-  var functions = FirebaseFunctions();
   var formKey = GlobalKey<FormState>();
 
   @override
@@ -179,9 +178,7 @@ class AddUserScreen extends StatelessWidget {
                         if (formKey.currentState!.validate()) {
                           showAlert(
                               context, AppLocalizations.of(context)!.loading);
-                          functions
-                              .addUserToFireStore(createUser())
-                              .then((value) {
+                          addUserToFireStore(createUser()).then((value) {
                             hideAlert(context);
                             showMessage(
                                 context,
@@ -201,7 +198,7 @@ class AddUserScreen extends StatelessWidget {
                       child: ButtonLabel(
                           label: AppLocalizations.of(context)!.addUser,
                           icon: const Icon(
-                            Icons.add,
+                            Icons.person_add_alt_1,
                             color: AppTheme.thirdColor,
                           ))),
                 ],

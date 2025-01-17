@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mayomart_dashboard/My_App/app_theme.dart';
 import 'package:mayomart_dashboard/Screens/AddUserScreen/add_user_screen.dart';
+import 'package:mayomart_dashboard/Screens/Add_Admin_Screen/add_admin_screen.dart';
 import 'package:mayomart_dashboard/Screens/HomeScreen/home_screen.dart';
 import 'package:mayomart_dashboard/Screens/User_Detail_Screen/user_Details_Screen.dart';
 import 'package:mayomart_dashboard/Screens/addItemScreen/add_item_screen.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           AddItemScreen.routeName: (context) => const AddItemScreen(),
           ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
           AddUserScreen.routeName: (context) => AddUserScreen(),
-          UserDetailsScreen.routeName: (context)=> UserDetailsScreen(),
+          AddAdminScreen.routeName: (context) => AddAdminScreen(),
+          UserDetailsScreen.routeName: (context) => UserDetailsScreen(),
         },
       ),
     );
