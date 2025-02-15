@@ -10,14 +10,14 @@ import 'package:mayomart_dashboard/Shared_Components/field_label.dart';
 import 'package:mayomart_dashboard/Shared_Components/show_alert.dart';
 import 'package:provider/provider.dart';
 
-class RecommendedForm extends StatefulWidget {
-  const RecommendedForm({super.key});
+class AddRecommendedForm extends StatefulWidget {
+  const AddRecommendedForm({super.key});
 
   @override
-  State<RecommendedForm> createState() => _RecommendedFormState();
+  State<AddRecommendedForm> createState() => _AddRecommendedFormState();
 }
 
-class _RecommendedFormState extends State<RecommendedForm> {
+class _AddRecommendedFormState extends State<AddRecommendedForm> {
   final titleCon = TextEditingController();
 
   final descriptionCon = TextEditingController();
@@ -129,7 +129,7 @@ class _RecommendedFormState extends State<RecommendedForm> {
                     Icons.add_rounded,
                     color: AppTheme.thirdColor,
                   ),
-                  label: AppLocalizations.of(context)!.recommendedAdded,
+                  label: AppLocalizations.of(context)!.addRecommended,
                 )),
           ),
         ],

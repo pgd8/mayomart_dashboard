@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mayomart_dashboard/Pages/Settings_Page/language_button.dart';
 import 'package:mayomart_dashboard/Pages/Settings_Page/mode_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mayomart_dashboard/Screens/Add_Admin_Screen/add_admin_screen.dart';
+import 'package:mayomart_dashboard/Screens/Users_Screen/add_admin_screen.dart';
 import 'package:mayomart_dashboard/Shared_Components/button_label.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

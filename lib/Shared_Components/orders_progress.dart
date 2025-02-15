@@ -6,16 +6,15 @@ import 'package:mayomart_dashboard/My_App/app_theme.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 class OrdersProgress extends StatelessWidget {
-  OrdersProgress({super.key});
-
+  const OrdersProgress({super.key});
   @override
   Widget build(BuildContext context) {
     List<OrderDataClass> orders = [];
     var valueNotifier = ValueNotifier(orders.length.toDouble());
     return SimpleCircularProgressBar(
-      progressColors: [AppTheme.mainColor],
+      progressColors: const [AppTheme.mainColor],
       valueNotifier: valueNotifier,
-      size: 0.12.sw,
+      size: 0.11.sw,
       onGetText: (double value) {
         FutureBuilder(
           future: getOrder(),

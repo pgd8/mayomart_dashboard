@@ -14,8 +14,10 @@ class ButtonLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(label,
+            textAlign: TextAlign.center,
             style: TextStyle(
                 color: AppTheme.thirdColor,
                 fontSize: 22.sp,

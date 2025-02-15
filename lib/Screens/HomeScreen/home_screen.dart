@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mayomart_dashboard/My_App/app_theme.dart';
 import 'package:mayomart_dashboard/My_App/my_provider.dart';
+import 'package:mayomart_dashboard/Pages/Dashboard_Page/dashboard_page.dart';
 import 'package:mayomart_dashboard/Pages/History_Page/history_page.dart';
 import 'package:mayomart_dashboard/Pages/Invetory_Page/inventory_page.dart';
+import 'package:mayomart_dashboard/Pages/Offers_Page/offers_page.dart';
+import 'package:mayomart_dashboard/Pages/Order_Page/order_page.dart';
 import 'package:mayomart_dashboard/Pages/Profile_Page/profile_page.dart';
+import 'package:mayomart_dashboard/Pages/Recommended_Page/recommended_page.dart';
 import 'package:mayomart_dashboard/Pages/Settings_Page/settings_page.dart';
 import 'package:mayomart_dashboard/Pages/Users_Page/users_page.dart';
 import 'package:provider/provider.dart';
@@ -57,14 +61,28 @@ class _HomeScreenState extends State<HomeScreen> {
             sideMenuController.changePage(index);
           }),
       SideMenuItem(
-          icon: const Icon(Icons.people),
-          title: AppLocalizations.of(context)!.users,
+          icon: const Icon(Icons.history),
+          title: AppLocalizations.of(context)!.history,
           onTap: (index, sideMenuController) {
             sideMenuController.changePage(index);
           }),
       SideMenuItem(
-          icon: const Icon(Icons.history),
-          title: AppLocalizations.of(context)!.history,
+        icon: const Icon(Icons.recommend_outlined),
+        title: AppLocalizations.of(context)!.recommended,
+        onTap: (index, sideMenuController) {
+          sideMenuController.changePage(index);
+        },
+      ),
+      SideMenuItem(
+        icon: const Icon(Icons.local_offer_outlined),
+        title: AppLocalizations.of(context)!.offers,
+        onTap: (index, sideMenuController) {
+          sideMenuController.changePage(index);
+        },
+      ),
+      SideMenuItem(
+          icon: const Icon(Icons.people),
+          title: AppLocalizations.of(context)!.users,
           onTap: (index, sideMenuController) {
             sideMenuController.changePage(index);
           }),
@@ -122,11 +140,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<Widget> pages = [
-    Container(),
+    DashboardPage(),
     InventoryPage(),
-    Container(),
-    UsersPage(),
+    OrderPage(),
     HistoryPage(),
+    RecommendedPage(),
+    OffersPage(),
+    UsersPage(),
     ProfilePage(),
     SettingsPage(),
   ];

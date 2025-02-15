@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mayomart_dashboard/Firebase/firebase_functions.dart';
-import 'package:mayomart_dashboard/Shared_Components/product_Item.dart';
+import 'package:mayomart_dashboard/Items/product_Item.dart';
 
 class Products extends StatelessWidget {
   Products({super.key});

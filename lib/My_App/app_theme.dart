@@ -24,7 +24,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(20.r),
         ),
         tileColor: lightTileColor),
-    progressIndicatorTheme: ProgressIndicatorThemeData(
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: mainColor,
     ),
     scaffoldBackgroundColor: thirdColor,
@@ -95,7 +95,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(20.r),
         ),
         tileColor: darkTileColor),
-    progressIndicatorTheme: ProgressIndicatorThemeData(
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: mainColor,
     ),
     hintColor: Colors.grey,

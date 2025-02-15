@@ -4,8 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mayomart_dashboard/Firebase/firebase_functions.dart';
 import 'package:mayomart_dashboard/My_App/app_theme.dart';
 import 'package:mayomart_dashboard/My_App/my_provider.dart';
-import 'package:mayomart_dashboard/Pages/Users_Page/Component/user_item.dart';
-import 'package:mayomart_dashboard/Screens/AddUserScreen/add_user_screen.dart';
+import 'package:mayomart_dashboard/Items/user_item.dart';
+import 'package:mayomart_dashboard/Screens/Users_Screen/add_user_screen.dart';
 import 'package:mayomart_dashboard/Shared_Components/button_label.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +48,7 @@ class _UsersPageState extends State<UsersPage> {
                 },
                 child: ButtonLabel(
                     label: AppLocalizations.of(context)!.addUser,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.person_add_alt_1,
                       color: AppTheme.thirdColor,
                     ))),
