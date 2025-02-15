@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mayomart_dashboard/Data_Classes/user_data_class.dart';
-import 'package:mayomart_dashboard/Screens/User_Detail_Screen/user_details_form.dart';
+import 'package:mayomart_dashboard/Forms/User_Forms/user_details_form.dart';
 
 class UserDetailsScreen extends StatelessWidget {
   static const String routeName = "User Details Screen";

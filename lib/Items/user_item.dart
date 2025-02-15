@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mayomart_dashboard/Data_Classes/user_data_class.dart';
-import 'package:mayomart_dashboard/Screens/User_Detail_Screen/user_Details_Screen.dart';
+import 'package:mayomart_dashboard/Screens/Users_Screen/user_Details_Screen.dart';
 
 class UserItem extends StatelessWidget {
   User user;
